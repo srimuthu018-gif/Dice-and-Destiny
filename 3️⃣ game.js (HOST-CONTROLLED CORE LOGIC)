@@ -1,0 +1,58 @@
+let currentTeam = 0;
+
+const teams = [
+  { money: 50000, sectors: [] },
+  { money: 50000, sectors: [] },
+  { money: 50000, sectors: [] },
+  { money: 50000, sectors: [] }
+];
+const tiles = [
+  { name: "Corporate HQ", type: "corner" },
+
+  { name: "Banking", type: "sector", price: 8000, rent: 2000, owner: null },
+  { name: "FMCG", type: "sector", price: 7000, rent: 1800, owner: null },
+  { name: "Strategy", type: "strategy" },
+  { name: "IT Services", type: "sector", price: 9000, rent: 2200, owner: null },
+
+  { name: "Market Event", type: "market" },
+  { name: "Healthcare", type: "sector", price: 8500, rent: 2100, owner: null },
+  { name: "Regulation", type: "bonus" }
+];
+const strategyCards = [
+  { text: "Operational efficiency +₹5000", value: 5000 },
+  { text: "Failed expansion −₹4000", value: -4000 },
+  { text: "Strong leadership +₹6000", value: 6000 },
+  { text: "Strategy misfire −₹3000", value: -3000 },
+  { text: "Process automation +₹4500", value: 4500 },
+  { text: "Delayed execution −₹2500", value: -2500 },
+  { text: "Cost control +₹4000", value: 4000 },
+  { text: "Bad merger −₹3500", value: -3500 },
+  { text: "Market alignment +₹3000", value: 3000 },
+  { text: "Internal conflict −₹2000", value: -2000 }
+];
+
+const marketCards = [
+  { text: "Market boom +₹6000", value: 6000 },
+  { text: "Recession −₹4000", value: -4000 },
+  { text: "High demand +₹5000", value: 5000 },
+  { text: "Inflation −₹3000", value: -3000 },
+  { text: "Export growth +₹4500", value: 4500 },
+  { text: "Currency loss −₹2500", value: -2500 },
+  { text: "Investor confidence +₹4000", value: 4000 },
+  { text: "Supply shock −₹3500", value: -3500 },
+  { text: "Price surge +₹3000", value: 3000 },
+  { text: "Market crash −₹2000", value: -2000 }
+];
+
+const bonusCards = [
+  { text: "Tax rebate +₹4000", value: 4000 },
+  { text: "Audit penalty −₹3000", value: -3000 },
+  { text: "Govt subsidy +₹5000", value: 5000 },
+  { text: "Regulatory fine −₹4000", value: -4000 },
+  { text: "Policy support +₹3500", value: 3500 },
+  { text: "Compliance failure −₹2500", value: -2500 },
+  { text: "Incentive grant +₹3000", value: 3000 },
+  { text: "Legal expense −₹2000", value: -2000 },
+  { text: "Bonus payout +₹4500", value: 4500 },
+  { text: "License issue −₹3500", value: -3500 }
+];
