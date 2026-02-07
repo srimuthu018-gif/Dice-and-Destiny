@@ -1,0 +1,17 @@
+function drawCard(deck) {
+  let card = deck[Math.floor(Math.random() * deck.length)];
+  teams[currentTeam].money += card.value;
+  alert(card.text);
+}
+
+function updateSidebar() {
+  let html = "";
+  teams.forEach((t, i) => {
+    html += `<b>Team ${i + 1}</b><br>`;
+    html += `Money: ₹${t.money}<br>`;
+    html += `Sectors: ${t.sectors.join(", ") || "None"}<hr>`;
+  });
+  document.getElementById("status").innerHTML = html;
+}
+
+updateSidebar();
