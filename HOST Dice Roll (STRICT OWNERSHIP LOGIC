@@ -1,0 +1,41 @@
+let positions = [0, 0, 0, 0];
+
+function rollDice() {
+  let dice = Math.floor(Math.random() * 6) + 1;
+  positions[currentTeam] = (positions[currentTeam] + dice) % tiles.length;
+
+  let tile = tiles[positions[currentTeam]];
+  let team = teams[currentTeam];
+
+  let log = `Team ${currentTeam + 1} rolled ${dice} → ${tile.name}`;
+
+  // SECTOR LOGIC
+  if (tile.type === "sector") {
+    if (tile.owner === null) {
+      let buy = confirm(`Team ${currentTeam + 1}: Buy ${tile.name} for ₹${tile.price}?`);
+      if (buy && team.money >= tile.price) {
+        tile.owner = currentTeam;
+        team.money -= tile.price;
+        team.sectors.push(tile.name);
+      }
+    } 
+    else if (tile.owner !== currentTeam) {
+      team.money -= tile.rent;
+      teams[tile.owner].money += tile.rent;
+      log += ` | Paid ₹${tile.rent} rent`;
+    }
+  }
+
+  // CARD TILES
+  if (tile.type === "strategy") drawCard(strategyCards);
+  if (tile.type === "market") drawCard(marketCards);
+  if (tile.type === "bonus") drawCard(bonusCards);
+
+  document.getElementById("log").innerText = log;
+
+  updateSidebar();
+
+  currentTeam = (currentTeam + 1) % 4;
+  document.getElementById("turn").innerText =
+    `Current Turn: Team ${currentTeam + 1}`;
+}
